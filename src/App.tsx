@@ -11,18 +11,14 @@ namespace App {
   }
 }
 
-class App extends React.Component<App.Props, {}> {
-  render() {
-    return (
-      <div>
-        <WorldViewer selectedPathId={this.props.selectedPathId} highlightColor={'green'}/>
-        <div id="report">
-          <Report/>
-        </div>
-      </div>
-    );
-  }
-}
+const App = (props: App.Props) => (
+  <div>
+    <WorldViewer selectedPathId={props.selectedPathId} highlightColor={'green'}/>
+    <div id="report">
+      <Report/>
+    </div>
+  </div>
+);
 
 const mapStateToProps = (state: ReportState) => {
   return {
