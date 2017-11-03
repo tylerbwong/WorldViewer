@@ -7,14 +7,6 @@ namespace Cell {
   }
 }
 
-class Cell extends React.Component<Cell.Props, {}> {
-  render() { 
-    return (
-      <td>
-        {this.props.row[this.props.col.dataField]}
-      </td>
-    );
-  }
-}
+const Cell = (props: Cell.Props) => <td>{props.row[props.col.dataField]}</td>;
 
 export default Cell;

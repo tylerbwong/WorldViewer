@@ -9,21 +9,19 @@ namespace HeaderRow {
   }
 }
 
-class HeaderRow extends React.Component<HeaderRow.Props, {}> {
-  render() {
-    let cells = this.props.cols.map(col => {
-      return (
-          <HeaderCell
-            key={col.dataField} 
-            col={col} 
-            sortField={this.props.sortField} 
-            onClick={() => this.props.onClickHeader(col.dataField)}
-          />
-      );
-    });
-    
-    return <thead>{cells}</thead>;
-  }
-}
+const HeaderRow = (props: HeaderRow.Props) => {
+  let cells = props.cols.map(col => {
+    return (
+        <HeaderCell
+          key={col.dataField} 
+          col={col} 
+          sortField={props.sortField} 
+          onClick={() => props.onClickHeader(col.dataField)}
+        />
+    );
+  });
+  
+  return <thead>{cells}</thead>;
+};
 
 export default HeaderRow;

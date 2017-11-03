@@ -9,23 +9,21 @@ namespace HeaderCell {
   }
 }
 
-class HeaderCell extends React.Component<HeaderCell.Props, {}> {
-  render() {
-    let sortArrowClass = '';
-      
-    if (this.props.sortField.dataField === this.props.col.dataField) {
-      sortArrowClass = this.props.sortField.ascending ? 'arrowUp' : 'arrowDown';
-    }
+const HeaderCell = (props: HeaderCell.Props) => {
+  let sortArrowClass = '';
     
-    return (
-      <th onClick={this.props.onClick}>
-        {this.props.col.name}
-        <div className="arrowContainer">
-          <div className={sortArrowClass}/>
-        </div>
-      </th>
-    );
-  }     
-}
+  if (props.sortField.dataField === props.col.dataField) {
+    sortArrowClass = props.sortField.ascending ? 'arrowUp' : 'arrowDown';
+  }
+  
+  return (
+    <th onClick={props.onClick}>
+      {props.col.name}
+      <div className="arrowContainer">
+        <div className={sortArrowClass}/>
+      </div>
+    </th>
+  );   
+};
 
 export default HeaderCell;

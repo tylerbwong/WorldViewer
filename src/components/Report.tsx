@@ -20,40 +20,38 @@ namespace Report {
   }
 }
 
-class Report extends React.Component<Report.Props, {}> {   
-  render() {
-    var rows = this.props.rows.map(row => {
-      let rowIsHovered = this.props.hoveredRow.id === row.id;
-      let rowIsSelected = this.props.selectedRow.id === row.id;
+const Report = (props: Report.Props) => {   
+  var rows = props.rows.map(row => {
+    let rowIsHovered = props.hoveredRow.id === row.id;
+    let rowIsSelected = props.selectedRow.id === row.id;
 
-      return (
-        <Row
-          key={row.id} 
-          row={row} 
-          cols={this.props.cols} 
-          selected={rowIsSelected}
-          hovered={rowIsHovered}
-          onClick={() => this.props.onClickRow(row)}
-          onMouseOver={() => this.props.onMouseOver(row)} 
-          onMouseOut={() => this.props.onMouseOut(row)}
-        />
-      );
-    });
-    
     return (
-      <table cellPadding="0" cellSpacing="0">
-        <HeaderRow 
-          cols={this.props.cols} 
-          sortField={this.props.sortField} 
-          onClickHeader={this.props.onClickHeader}
-        />
-        <tbody>
-          {rows}  
-        </tbody>
-      </table>
+      <Row
+        key={row.id} 
+        row={row} 
+        cols={props.cols} 
+        selected={rowIsSelected}
+        hovered={rowIsHovered}
+        onClick={() => props.onClickRow(row)}
+        onMouseOver={() => props.onMouseOver(row)} 
+        onMouseOut={() => props.onMouseOut(row)}
+      />
     );
-  }
-}
+  });
+  
+  return (
+    <table cellPadding="0" cellSpacing="0">
+      <HeaderRow 
+        cols={props.cols} 
+        sortField={props.sortField} 
+        onClickHeader={props.onClickHeader}
+      />
+      <tbody>
+        {rows}  
+      </tbody>
+    </table>
+  );
+};
 
 const mapStateToProps = (state: ReportState) => {
   return {
