@@ -4,6 +4,7 @@ import HeaderRow from './HeaderRow';
 import { connect } from 'react-redux';
 import { ReportAction, hoverAction, sortAction, selectAction } from '../actions';
 import { ReportState } from '../reducers';
+import './Report.css';
 
 interface ReportProps {
   rows: { country: string, year: number, spending: number, id: number }[];

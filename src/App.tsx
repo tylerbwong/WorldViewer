@@ -14,7 +14,7 @@ class App extends React.Component<AppProps, {}> {
     return (
       <div>
         <WorldViewer selectedPathId={this.props.selectedPathId} highlightColor={'green'}/>
-        <div style={{display: 'flex', justifyContent: 'center'}}>
+        <div id="report">
           <Report/>
         </div>
       </div>
