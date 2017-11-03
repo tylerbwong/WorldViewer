@@ -5,11 +5,13 @@ import { connect } from 'react-redux';
 import { ReportState } from './reducers';
 import './App.css';
 
-interface AppProps {
-  selectedPathId: string;
+namespace App {
+  export interface Props {
+    selectedPathId: string;
+  }
 }
 
-class App extends React.Component<AppProps, {}> {
+class App extends React.Component<App.Props, {}> {
   render() {
     return (
       <div>

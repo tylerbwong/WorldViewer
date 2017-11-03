@@ -6,19 +6,21 @@ import { ReportAction, hoverAction, sortAction, selectAction } from '../actions'
 import { ReportState } from '../reducers';
 import './Report.css';
 
-interface ReportProps {
-  rows: { country: string, year: number, spending: number, id: number }[];
-  cols: { dataField: string, name: string }[];
-  selectedRow: { country: string, year: number, spending: number, id: number };
-  sortField: { dataField: string, ascending: boolean };
-  hoveredRow: { country: string, year: number, spending: number, id: number };
-  onMouseOver: (row: { country: string, year: number, spending: number, id: number }) => {};
-  onMouseOut: (row: { country: string, year: number, spending: number, id: number }) => {};
-  onClickHeader: (dataField: string) => {};
-  onClickRow: (row: { country: string, year: number, spending: number, id: number }) => {};
+namespace Report {
+  export interface Props {
+    rows: { country: string, year: number, spending: number, id: number }[];
+    cols: { dataField: string, name: string }[];
+    selectedRow: { country: string, year: number, spending: number, id: number };
+    sortField: { dataField: string, ascending: boolean };
+    hoveredRow: { country: string, year: number, spending: number, id: number };
+    onMouseOver: (row: { country: string, year: number, spending: number, id: number }) => {};
+    onMouseOut: (row: { country: string, year: number, spending: number, id: number }) => {};
+    onClickHeader: (dataField: string) => {};
+    onClickRow: (row: { country: string, year: number, spending: number, id: number }) => {};
+  }
 }
 
-class Report extends React.Component<ReportProps, {}> {   
+class Report extends React.Component<Report.Props, {}> {   
   render() {
     var rows = this.props.rows.map(row => {
       let rowIsHovered = this.props.hoveredRow.id === row.id;

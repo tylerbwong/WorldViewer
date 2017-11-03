@@ -1,13 +1,15 @@
 import React from 'react';
 import './HeaderCell.css';
 
-interface HeaderCellProps {
+namespace HeaderCell {
+  export interface Props {
     sortField: { dataField: string, ascending: boolean };
     col: { dataField: string, name: string };
     onClick: () => {};
+  }
 }
 
-class HeaderCell extends React.Component<HeaderCellProps, {}> {
+class HeaderCell extends React.Component<HeaderCell.Props, {}> {
   render() {
     let sortArrowClass = '';
       

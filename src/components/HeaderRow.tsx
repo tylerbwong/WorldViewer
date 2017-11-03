@@ -1,13 +1,15 @@
 import React from 'react';
 import HeaderCell from './HeaderCell';
 
-interface HeaderRowProps {
-  cols: { dataField: string, name: string }[];
-  sortField: { dataField: string, ascending: boolean };
-  onClickHeader: (dataField: string) => {};
+namespace HeaderRow {
+  export interface Props {
+    cols: { dataField: string, name: string }[];
+    sortField: { dataField: string, ascending: boolean };
+    onClickHeader: (dataField: string) => {};
+  }
 }
 
-class HeaderRow extends React.Component<HeaderRowProps, {}> {
+class HeaderRow extends React.Component<HeaderRow.Props, {}> {
   render() {
     let cells = this.props.cols.map(col => {
       return (

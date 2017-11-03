@@ -2,17 +2,19 @@ import React from 'react';
 import Cell from './Cell';
 import './Row.css';
 
-interface RowProps {
-  cols: { dataField: string }[];
-  row: { id: number };
-  hovered: boolean;
-  selected: boolean;
-  onMouseOver: () => {};
-  onMouseOut: () => {};
-  onClick: () => {};
+namespace Row {
+  export interface Props {
+    cols: { dataField: string }[];
+    row: { id: number };
+    hovered: boolean;
+    selected: boolean;
+    onMouseOver: () => {};
+    onMouseOut: () => {};
+    onClick: () => {};
+  }
 }
 
-class Row extends React.Component<RowProps, {}> {
+class Row extends React.Component<Row.Props, {}> {
   render() {
     let cells = this.props.cols.map(col => {
       return( 
