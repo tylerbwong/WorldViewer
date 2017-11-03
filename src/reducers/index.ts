@@ -2,7 +2,7 @@ import { ReportAction } from '../actions';
 
 export type ReportState = {
   selectedRow: { country: string, year: number, spending: number, id: number },
-  hoveredRowId: number,
+  hoveredRow: { country: string, year: number, spending: number, id: number },
   sortField: { dataField: string, ascending: boolean },
   rows: { country: string, year: number, spending: number, id: number }[],
   cols: { name: string, dataField: string }[]
@@ -15,7 +15,7 @@ export function reportReducer(state: ReportState, action: ReportAction) {
         ? action.row 
         : { country: '', year: -1, spending: -1, id: -1 } };
     case 'HOVER':
-      return { ...state, hoveredRowId: action.rowId };
+      return { ...state, hoveredRow: action.row };
     case 'SORT':
       var ascending = state.sortField.dataField === action.dataField 
         ? !state.sortField.ascending 

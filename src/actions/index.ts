@@ -1,7 +1,7 @@
 export type ReportAction
   = { type: 'SORT', dataField: string }
-  | { type: 'SELECT', row: { country: '', year: -1, spending: -1, id: -1 } }
-  | { type: 'HOVER', rowId: number };
+  | { type: 'SELECT', row: { country: string, year: number, spending: number, id: number } }
+  | { type: 'HOVER', row: { country: string, year: number, spending: number, id: number } };
 
 export const ACTION_SORT: 'SORT' = 'SORT';
 export const ACTION_SELECT: 'SELECT' = 'SELECT';
@@ -14,16 +14,16 @@ export function sortAction(dataField: string): ReportAction {
   };
 }
 
-export function selectAction(row: { country: '', year: -1, spending: -1, id: -1 }): ReportAction {
+export function selectAction(row: { country: string, year: number, spending: number, id: number }): ReportAction {
   return {
     type: ACTION_SELECT,
     row: row
   };
 }
 
-export function hoverAction(rowId: number): ReportAction {
+export function hoverAction(row: { country: string, year: number, spending: number, id: number }): ReportAction {
   return {
     type: ACTION_HOVER,
-    rowId: rowId
+    row: row
   };
 }

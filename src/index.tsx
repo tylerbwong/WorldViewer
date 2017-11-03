@@ -10,7 +10,7 @@ import './index.css';
 
 const defaultState = {
   selectedRow: { country: '', year: -1, spending: -1, id: -1 },
-  hoveredRowId: -1,
+  hoveredRow: { country: '', year: -1, spending: -1, id: -1 },
   sortField: {
     dataField: 'country',
     ascending: false

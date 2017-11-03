@@ -24,7 +24,7 @@ class App extends React.Component<AppProps, {}> {
 
 const mapStateToProps = (state: ReportState) => {
   return {
-    selectedPathId: state.selectedRow.country
+    selectedPathId: state.selectedRow.country || state.hoveredRow.country
   };
 };
 

@@ -11,9 +11,12 @@ class HeaderRow extends React.Component<HeaderRowProps, {}> {
   render() {
     let cells = this.props.cols.map(col => {
       return (
-          <HeaderCell col={col} 
-                      sortField={this.props.sortField} 
-                      onClick={() => this.props.onClickHeader(col.dataField)}/>
+          <HeaderCell
+            key={col.dataField} 
+            col={col} 
+            sortField={this.props.sortField} 
+            onClick={() => this.props.onClickHeader(col.dataField)}
+          />
       );
     });
     

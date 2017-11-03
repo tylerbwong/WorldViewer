@@ -15,7 +15,13 @@ interface RowProps {
 class Row extends React.Component<RowProps, {}> {
   render() {
     let cells = this.props.cols.map(col => {
-      return <Cell row={this.props.row} col={col}/>;
+      return( 
+        <Cell
+          key={this.props.row.id} 
+          row={this.props.row}
+          col={col}
+        />
+      );
     });
 
     let rowColorClass = '';
@@ -27,13 +33,16 @@ class Row extends React.Component<RowProps, {}> {
     }
     
     return (
-      <tr key={this.props.row.id} 
-          className={rowColorClass}
-          onClick={this.props.onClick} 
-          onMouseOver={this.props.onMouseOver}
-          onMouseOut={this.props.onMouseOut}>
+      <tr 
+        key={this.props.row.id} 
+        className={rowColorClass}
+        onClick={this.props.onClick} 
+        onMouseOver={this.props.onMouseOver}
+        onMouseOut={this.props.onMouseOut}
+      >
         {cells}
-      </tr>);
+      </tr>
+    );
   }
 }
 
