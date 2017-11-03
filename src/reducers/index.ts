@@ -6,16 +6,20 @@ export type ReportState = {
   sortField: { dataField: string, ascending: boolean },
   rows: { country: string, year: number, spending: number, id: number }[],
   cols: { name: string, dataField: string }[]
-}
+};
 
 export function reportReducer(state: ReportState, action: ReportAction) {
-  switch(action.type) {
+  switch (action.type) {
     case 'SELECT':
-      return { ...state, selectedRow: state.selectedRow.id != action.row.id ? action.row : { country: '', year: -1, spending: -1, id: -1 } };
+      return { ...state, selectedRow: state.selectedRow.id !== action.row.id 
+        ? action.row 
+        : { country: '', year: -1, spending: -1, id: -1 } };
     case 'HOVER':
       return { ...state, hoveredRowId: action.rowId };
     case 'SORT':
-      var ascending = state.sortField.dataField == action.dataField ? !state.sortField.ascending : true;
+      var ascending = state.sortField.dataField === action.dataField 
+        ? !state.sortField.ascending 
+        : true;
       let newSortField = { dataField: action.dataField, ascending: ascending };
       let newRows = [...state.rows];
         
@@ -26,8 +30,7 @@ export function reportReducer(state: ReportState, action: ReportAction) {
             
         if (v1 > v2) {
           comp = 1;
-        }
-        else if (v1 < v2) {
+        } else if (v1 < v2) {
           comp = -1;
         }
             

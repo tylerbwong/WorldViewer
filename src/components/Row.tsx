@@ -7,24 +7,23 @@ interface RowProps {
   row: { id: number };
   hovered: boolean;
   selected: boolean;
-  onMouseOver: () => any;
-  onMouseOut: () => any;
-  onClick: () => any;
+  onMouseOver: () => {};
+  onMouseOut: () => {};
+  onClick: () => {};
 }
 
-class Row extends React.Component<RowProps, any> {
+class Row extends React.Component<RowProps, {}> {
   render() {
     let cells = this.props.cols.map(col => {
-      return <Cell row={this.props.row} col={col} />
+      return <Cell row={this.props.row} col={col}/>;
     });
 
-    let rowColorClass = "";
+    let rowColorClass = '';
     
-    if(this.props.hovered) {
-      rowColorClass = "hoveredRow";
-    }
-    else if(this.props.selected) {
-      rowColorClass = "selectedRow";
+    if (this.props.hovered) {
+      rowColorClass = 'hoveredRow';
+    } else if (this.props.selected) {
+      rowColorClass = 'selectedRow';
     }
     
     return (

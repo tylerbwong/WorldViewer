@@ -11,23 +11,25 @@ interface ReportProps {
   selectedRow: { country: string, year: number, spending: number, id: number };
   sortField: { dataField: string, ascending: boolean };
   hoveredRowId: number;
-  onMouseOver: (rowId: number) => any;
-  onMouseOut: (rowId: number) => any;
-  onClickHeader: (dataField: string) => any;
-  onClickRow: (row: { country: string, year: number, spending: number, id: number }) => any;
+  onMouseOver: (rowId: number) => {};
+  onMouseOut: (rowId: number) => {};
+  onClickHeader: (dataField: string) => {};
+  onClickRow: (row: { country: string, year: number, spending: number, id: number }) => {};
 }
 
-class Report extends React.Component<ReportProps, any> {   
+class Report extends React.Component<ReportProps, {}> {   
   render() {
     var rows = this.props.rows.map(row => {
-      let rowIsHovered = this.props.hoveredRowId == row.id;
-      let rowIsSelected = this.props.selectedRow.id == row.id;
+      let rowIsHovered = this.props.hoveredRowId === row.id;
+      let rowIsSelected = this.props.selectedRow.id === row.id;
 
-      return <Row row={row} cols={this.props.cols} 
-                  selected={rowIsSelected} hovered={rowIsHovered}
-                  onClick={() => this.props.onClickRow(row)}
-                  onMouseOver={() => this.props.onMouseOver(row.id)} 
-                  onMouseOut={() => this.props.onMouseOut(row.id)}/>
+      return (
+        <Row row={row} cols={this.props.cols} 
+             selected={rowIsSelected} hovered={rowIsHovered}
+             onClick={() => this.props.onClickRow(row)}
+             onMouseOver={() => this.props.onMouseOver(row.id)} 
+             onMouseOut={() => this.props.onMouseOut(row.id)}/>
+      );
     });
     
     return (
@@ -49,15 +51,15 @@ const mapStateToProps = (state: ReportState) => {
     sortField: state.sortField,
     hoveredRowId: state.hoveredRowId
   };
-}
+};
 
-const mapDispatchToProps = (dispatch: (action: ReportAction) => any) => {
+const mapDispatchToProps = (dispatch: (action: ReportAction) => {}) => {
   return {
     onMouseOver: (rowId: number) => dispatch(hoverAction(rowId)),
     onMouseOut: (rowId: number) => dispatch(hoverAction(-1)),
     onClickHeader: (dataField: string) => dispatch(sortAction(dataField)),
     onClickRow: (row: { country: '', year: -1, spending: -1, id: -1 }) => dispatch(selectAction(row))
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Report);

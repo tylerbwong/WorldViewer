@@ -25,9 +25,9 @@ const defaultState = {
     { country: 'AU', year: 2017, spending: 4.0, id: 6 }
   ],
   cols: [
-    { name: 'Country', dataField: "country" },
-    { name: 'Year', dataField: "year" },
-    { name: '% GDP', dataField: "spending" }
+    { name: 'Country', dataField: 'country' },
+    { name: 'Year', dataField: 'year' },
+    { name: '% GDP', dataField: 'spending' }
   ]
 };
 

@@ -5,7 +5,7 @@ interface WorldViewerProps {
     highlightColor: string;
 }
 
-class WorldViewer extends React.Component<WorldViewerProps, any> {
+class WorldViewer extends React.Component<WorldViewerProps, {}> {
     render() {
         return(
             <svg width="100%" height="100%" viewBox="-500 -100 2000 800">

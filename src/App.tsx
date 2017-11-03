@@ -9,7 +9,7 @@ interface AppProps {
   selectedPathId: string;
 }
 
-class App extends React.Component<AppProps, any> {
+class App extends React.Component<AppProps, {}> {
   render() {
     return (
       <div>
@@ -26,6 +26,6 @@ const mapStateToProps = (state: ReportState) => {
   return {
     selectedPathId: state.selectedRow.country
   };
-}
+};
 
 export default connect(mapStateToProps)(App);

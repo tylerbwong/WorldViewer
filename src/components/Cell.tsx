@@ -5,7 +5,7 @@ interface CellProps {
   col: { dataField: string };
 }
 
-class Cell extends React.Component<CellProps, any> {
+class Cell extends React.Component<CellProps, {}> {
     render() { 
        return (
          <td>
