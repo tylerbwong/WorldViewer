@@ -20,34 +20,34 @@ namespace Report {
   }
 }
 
-const Report = (props: Report.Props) => {   
+const Report = (props: Report.Props) => {
   var rows = props.rows.map(row => {
     let rowIsHovered = props.hoveredRow.id === row.id;
     let rowIsSelected = props.selectedRow.id === row.id;
 
     return (
       <Row
-        key={row.id} 
-        row={row} 
-        cols={props.cols} 
+        key={row.id}
+        row={row}
+        cols={props.cols}
         selected={rowIsSelected}
         hovered={rowIsHovered}
         onClick={() => props.onClickRow(row)}
-        onMouseOver={() => props.onMouseOver(row)} 
+        onMouseOver={() => props.onMouseOver(row)}
         onMouseOut={() => props.onMouseOut(row)}
       />
     );
   });
-  
+
   return (
     <table cellPadding="0" cellSpacing="0">
-      <HeaderRow 
-        cols={props.cols} 
-        sortField={props.sortField} 
+      <HeaderRow
+        cols={props.cols}
+        sortField={props.sortField}
         onClickHeader={props.onClickHeader}
       />
       <tbody>
-        {rows}  
+        {rows}
       </tbody>
     </table>
   );
